@@ -1,0 +1,6 @@
+cache/*
+template/
+chat_history/*
+!chat_history/.gitkeep
+chat_history/sent/*
+!chat_history/sent/.gitkeep
