@@ -51,7 +51,7 @@ function chat8bot_update_history($message, $role = "visitor") {
             "Content-type: text/html; charset=utf-8",
             "From: $emailAddress",
         );
-        wp_mail($emailAddress, "New Chat8Bot Conversation", $email_content, $email_headers);
+        wp_mail($emailAddress, "New Chat8Bot | " . site_url(), $email_content, $email_headers);
     }
 
     file_put_contents($chat_filename, json_encode($chat_data, JSON_PRETTY_PRINT));

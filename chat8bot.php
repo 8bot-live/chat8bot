@@ -22,6 +22,8 @@ define('CHAT8BOT_PLUGIN_DIR', plugin_dir_path(__FILE__));
 // Include required files.
 require_once CHAT8BOT_PLUGIN_DIR . 'includes/settings-page.php';
 require_once CHAT8BOT_PLUGIN_DIR . 'includes/ajax-chat.php';
+require_once CHAT8BOT_PLUGIN_DIR . 'includes/conversations-page.php';
+
 
 // Add settings and donate links to the plugin action links
 function chat8bot_add_plugin_links($links) {
@@ -108,7 +110,7 @@ function chat8bot_email_history() {
             "Content-type: text/html; charset=utf-8",
             "From: $emailAddress",
         );
-        wp_mail($emailAddress, "Chat8Bot Conversation Log", $email_content, $email_headers);
+        wp_mail($emailAddress, "Chat8Bot Log | " . site_url(), $email_content, $email_headers);
         
         //move
         $sent_file = $sent_dir . basename($chat_file);
