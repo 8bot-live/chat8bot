@@ -1,6 +1,6 @@
-# WordPress AI Chatbot Plugin
+# WordPress ChatGPT Plugin - Website Chatbot
 
-A free and simple AI chatbot plugin for WordPress that integrates with OpenAI's API to provide intelligent responses to user queries. Unlike cloud-based solutions, all conversations are managed locally on your site, ensuring better control and privacy. You only need an OpenAI API key to get started. The API is a free trial, although if paid, its about 1 cent per chat session depending what model you choose.
+A free and simple AI chatbot plugin for WordPress that integrates with OpenAI's API to provide intelligent responses to user queries. Unlike cloud-based solutions, all conversations are managed locally on your site, ensuring better control and privacy. You only need an OpenAI API key to get started. The API is a free trial, although if paid, it's about 1 cent per chat session depending what model you choose and how big your knowlegebase is.
 
 ## Features
 
@@ -8,8 +8,7 @@ A free and simple AI chatbot plugin for WordPress that integrates with OpenAI's 
 - **OpenAI API Integration** – Simply register for an OpenAI API key and start using the chatbot.
 - **Customizable Appearance** – Modify colors, text, and intro messages to match your website branding.
 - **Email Notifications** – Set up email alerts for new chat sessions and customer inquiries.
-- **Knowledge Base Support** – Enhance AI responses by providing custom knowledge base content tailored to your website.
-- **Google reCAPTCHA v2** – Protect against spam and bots.
+- **Knowledge Base Support** – Enhance AI responses by providing custom knowledge base content tailored to your website. This is why the plugin was built.
 
 ## Installation
 
@@ -37,21 +36,16 @@ To use this feature:
 3. Save your settings, and the AI will use this information to refine responses.
 
 ### Email Notifications
-- Receive chat transcripts via email.
-- Set email timeout to send notifications if no response is received within a defined period.
-
-### reCAPTCHA v2 Protection
-- Enable reCAPTCHA to prevent spam and bot interactions.
+- Receive new chat transcripts via email as they happen.
+- Schedule chat close and email (x)hrs after last comment.
+- View chat history in wp admin
 
 ## Usage
 
-- After configuration, the chatbot will appear on your website.
+- After configuration, the chatbot will appear on every page on the bottom right.
 - Users can interact with the chatbot, and their queries will be processed using OpenAI’s API.
 - Admins can review past conversations locally without third-party data storage.
 
-## Contributions
-
-Feel free to contribute via [GitHub](https://github.com/your-repo-link-here). Pull requests are welcome!
 
 ## License
 
@@ -61,4 +55,4 @@ This plugin is open-source and distributed under the MIT License.
 
 For questions or support, contact: info@8bot.live
 
-Donate via [PayPal](https://paypal.me/8botlive)
+Donate via [PayPal](https://paypal.me/8botlive) 💰
