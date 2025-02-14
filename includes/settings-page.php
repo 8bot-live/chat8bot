@@ -35,6 +35,8 @@ function chat8bot_register_settings() {
     register_setting('chat8bot_settings_group', 'chat8bot_gpt_temperature');
     register_setting('chat8bot_settings_group', 'chat8bot_msg_memory');
 
+    register_setting('chat8bot_settings_group', 'chat8bot_knowlegbase');
+
     register_setting('chat8bot_settings_group', 'chat8bot_email_address');
     register_setting('chat8bot_settings_group', 'chat8bot_email_new');
     register_setting('chat8bot_settings_group', 'chat8bot_email_after_hrs'); //chat8bot_email_after_min
@@ -46,24 +48,8 @@ add_action('admin_init', 'chat8bot_register_settings');
 
 // Settings page content
 function chat8bot_settings_page() {
-    // Define the file path for knowledge-base.txt
-    $filenameKB = plugin_dir_path(__FILE__) . 'knowledge-base.txt';
-
-    // Read the content of the knowledge base file
-    $kbTextStr = '';
-    if (file_exists($filenameKB)) {
-        $kbTextStr = file_get_contents($filenameKB);
-    }
-
-    // Process form submission
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['knowledge_base_content'])) {
-        check_admin_referer('chat8bot_settings_nonce');
-        $filenameKB = plugin_dir_path(__FILE__) . 'knowledge-base.txt';
-        $kbTextStr = sanitize_textarea_field($_POST['knowledge_base_content']);
-        file_put_contents($filenameKB, $kbTextStr);
-        echo '<div class="updated"><p>Knowledge Base updated successfully!</p></div>';
-    }
-?>
+ 
+    ?>
     <div class="wrap">
 
         <form method="post" action="options.php">
@@ -103,7 +89,7 @@ function chat8bot_settings_page() {
                                 <td><input type="text" name="chat8bot_secondary_color_bg" value="<?php echo esc_attr(get_option('chat8bot_secondary_color_bg', '#e3e3f1')); ?>" class="" /> Background</td>
                             </tr>
                         </table>
-                                 
+
                     </td>
                 </tr>
                 <tr>
@@ -179,67 +165,23 @@ function chat8bot_settings_page() {
             </table>
             <?php submit_button(); ?>
 
-        </form>
+            <hr>
 
-
-
-        <hr>
-        <form method="post">
-            <?php wp_nonce_field('chat8bot_settings_nonce'); ?>
             <h1>Knowledge Base Content</h1>
             <p>The knowledge base allows you to provide specific information to help guide ChatGPT response. This is sent for each chat comment.
                 To help create your knowledge base, have a conversation with ChatGPT as a user. Ask it to summarize key content from your website,
                 which can help you build your knowledge base more effectively. This helps teach the API how to handle common questions,
                 provide accurate information, and even filter out irrelevant queries.</p>
-            <textarea name="knowledge_base_content" rows="20" cols="50" class="large-text"><?php echo esc_textarea($kbTextStr); ?></textarea>
+                <textarea name="chat8bot_knowlegbase" rows="20" cols="50" class="large-text"><?php echo esc_attr(get_option('chat8bot_knowlegbase', "a")); ?></textarea>
+
             <small>About 1000 words is roughly equivalent to 750 tokens, which is used for calculating usage costs.</small>
-            <?php submit_button('Save Knowledge Base'); ?>
+            <?php submit_button(); ?>
+
+
         </form>
-
-        <!-- GPT Models REF -->
         <br>
-        <hr>
-        <br>
-        <h2>ChatGPT Information</h2>
-        <table class="widefat striped ">
-            <thead>
-                <tr>
-                    <th><strong>GTP Models</strong></th>
-                    <th><strong>Best For</strong></th>
-                    <th><strong>Pros</strong></th>
-                    <th><strong>Cons</strong></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><code>gpt-4-turbo</code></td>
-                    <td>Fast &amp; intelligent customer support, FAQ, and general AI chat</td>
-                    <td>Faster, cheaper, and optimized version of GPT-4</td>
-                    <td>Slightly less capable than full GPT-4</td>
-                </tr>
-                <tr>
-                    <td><code>gpt-4</code></td>
-                    <td>High-quality, context-aware conversations</td>
-                    <td>More accurate and nuanced responses</td>
-                    <td>Slower &amp; more expensive</td>
-                </tr>
-                <tr>
-                    <td><code>gpt-3.5-turbo</code></td>
-                    <td>Budget-friendly and fast chatbot responses</td>
-                    <td>Quick and cost-effective</td>
-                    <td>Less accuracy in complex topics</td>
-                </tr>
-                <tr>
-                    <td><code>gpt-3.5</code></td>
-                    <td>Basic chatbot functionalities</td>
-                    <td>Cheapest option</td>
-                    <td>Limited reasoning ability</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <hr>
-        Created Free by Ged. Donate here <a href="https://8bot.live" target="_blank">8bot.live</a>
+        <br> 
+        Developed for free by Ged. Donate via <a href="paypal.me/8botlive" target="_blank">paypal</a>
     </div>
 <?php
 }

@@ -85,8 +85,7 @@ function chat8bot_handle_ajax_request() {
     $dev_dir = "{$plugin_dir}/dev";
 
     //Load KnowledgeBase
-    $knowledgeBaseFile = "{$plugin_dir}/includes/knowledge-base.txt";
-    $knowledgeBaseContent = file_exists($knowledgeBaseFile) ? file_get_contents($knowledgeBaseFile) : '';
+    $knowledgeBaseContent = get_option('chat8bot_knowlegbase', "");
 
     //Word Limit to KnowledgeBase
     $limitStr = "## Client Interaction - Response: \r\n-------------------------------------------\r\n";

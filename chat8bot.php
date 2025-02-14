@@ -3,12 +3,13 @@
 /**
  * Plugin Name: Chat8Bot
  * Plugin URI: https://8bot.live
- * Description: A custom chatbot plugin using OpenAI API.
- * Version: 1.0
- * Author: Your Name
- * Author URI: https://example.com
+ * Description: A chatbot plugin using OpenAI API.
+ * Version: 1.1
+ * Author: Ged 
+ * Author URI: https://8bot.live
  * Text Domain: chat8bot
  */
+
 
 if (!defined('ABSPATH')) {
     exit; // Prevent direct access.
@@ -21,7 +22,6 @@ define('CHAT8BOT_PLUGIN_DIR', plugin_dir_path(__FILE__));
 // Include required files.
 require_once CHAT8BOT_PLUGIN_DIR . 'includes/settings-page.php';
 require_once CHAT8BOT_PLUGIN_DIR . 'includes/ajax-chat.php';
-
 
 // Add settings and donate links to the plugin action links
 function chat8bot_add_plugin_links($links) {
